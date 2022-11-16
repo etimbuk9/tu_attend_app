@@ -75,6 +75,26 @@ class Connector {
     print('Table $tableName created');
   }
 
+  Future<void> createSignupTable(tableName) async {
+    var dbpaths = await getDatabasesPath();
+    var path = join(dbpaths, 'attendanceData.db');
+
+    Database database = await openDatabase(path);
+    await database.execute(
+        'CREATE TABLE IF NOT EXISTS $tableName (id INTEGER PRIMARY KEY, firstname TEXT, surname TEXT, studentNo TEXT)');
+    print('Table $tableName created');
+  }
+
+  Future<void> insertSignupData(tableName, data) async {
+    var dbpaths = await getDatabasesPath();
+    var path = join(dbpaths, 'attendanceData.db');
+
+    Database database = await openDatabase(path);
+    await database.rawInsert(
+        'INSERT INTO $tableName (firstname, surname, studentNo) VALUES (?,?,?,?,?)',
+        data);
+  }
+
   Future<void> insertData(tableName, data) async {
     var dbpaths = await getDatabasesPath();
     var path = join(dbpaths, 'attendanceData.db');

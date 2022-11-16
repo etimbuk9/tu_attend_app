@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tu_attend/db_connect/connector.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -8,6 +9,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  String fName = '';
+  String sName = '';
+  String sNumber = '';
+  Connector connector = Connector();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +24,19 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              FlutterLogo(
+              const Icon(
+                Icons.qr_code_2,
                 size: 200,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    fName = value;
+                  });
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -32,10 +44,15 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: 'First Name',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    sName = value;
+                  });
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -43,10 +60,15 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: 'Surname',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    sNumber = value;
+                  });
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -54,7 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   hintText: 'Student Number',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
