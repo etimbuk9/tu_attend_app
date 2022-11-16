@@ -91,7 +91,7 @@ class Connector {
 
     Database database = await openDatabase(path);
     await database.rawInsert(
-        'INSERT INTO $tableName (firstname, surname, studentNo) VALUES (?,?,?,?,?)',
+        'INSERT INTO $tableName (firstname, surname, studentNo) VALUES (?,?,?)',
         data);
   }
 

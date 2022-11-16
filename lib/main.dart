@@ -1,18 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:tu_attend/db_connect/connector.dart';
 import 'screens/homepage.dart';
 import 'screens/new_homepage.dart';
 import 'screens/sign_up.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  bool isUserData = false;
+
+  Future getUserdata() async {
+    Connector connector = Connector();
+    bool output = false;
+    List data = [];
+    try {
+      data = await connector.getData('signup');
+      print(data);
+    } catch (err) {
+      await connector.createSignupTable('signup');
+    }
+
+    if (data.isNotEmpty) {
+      output = true;
+    }
+
+    isUserData = output;
+  }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    getUserdata();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -27,7 +47,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: SignUpPage(),
+      home: isUserData ? NewHomePage() : SignUpPage(),
       // home: const NewHomePage(),
     );
   }
