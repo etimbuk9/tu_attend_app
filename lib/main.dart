@@ -8,10 +8,17 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   bool isUserData = false;
 
-  Future getUserdata() async {
+  Future<void> getUserdata() async {
     Connector connector = Connector();
     bool output = false;
     List data = [];
@@ -21,18 +28,19 @@ class MyApp extends StatelessWidget {
     } catch (err) {
       await connector.createSignupTable('signup');
     }
-
     if (data.isNotEmpty) {
       output = true;
     }
-
-    isUserData = output;
+    setState(() {
+      isUserData = output;
+    });
   }
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     getUserdata();
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
