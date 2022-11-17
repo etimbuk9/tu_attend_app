@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     List data = [];
     try {
       data = await connector.getData('signup');
-      print(data);
+      // print(data);
     } catch (err) {
       await connector.createSignupTable('signup');
     }
