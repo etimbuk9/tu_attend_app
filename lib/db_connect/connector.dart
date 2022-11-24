@@ -95,13 +95,21 @@ class Connector {
         data);
   }
 
+  Future<void> deleteSignupData(tableName) async {
+    var dbpaths = await getDatabasesPath();
+    var path = join(dbpaths, 'attendanceData.db');
+
+    Database database = await openDatabase(path);
+    await database.rawInsert('DELETE FROM $tableName');
+  }
+
   Future<void> insertData(tableName, data) async {
     var dbpaths = await getDatabasesPath();
     var path = join(dbpaths, 'attendanceData.db');
 
     Database database = await openDatabase(path);
     await database.rawInsert(
-        'INSERT INTO $tableName (eventname, studentNo, time, sync, hash) VALUES (?,?,?,?,?)',
+        'INSERT INTO $tableName (firstname, surname, studentNo) VALUES (?,?,?)',
         data);
   }
 

@@ -37,8 +37,7 @@ class NavRow extends StatelessWidget {
                 icon: Icons.home,
                 title: 'Home',
                 buttonFunction: () {
-                  if (currentPage == Pages.home) {
-                  } else {
+                  if (currentPage != Pages.home) {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (BuildContext context) {
                       return NewHomePage();
@@ -50,9 +49,8 @@ class NavRow extends StatelessWidget {
                 icon: Icons.document_scanner_outlined,
                 title: 'Activities',
                 buttonFunction: () async {
-                  if (currentPage == Pages.documents) {
-                  } else {
-                    Navigator.push(
+                  if (currentPage != Pages.documents) {
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (BuildContext context) {
                         return DocumentPage();
@@ -65,9 +63,8 @@ class NavRow extends StatelessWidget {
                 icon: Icons.refresh,
                 title: 'Sync',
                 buttonFunction: () {
-                  if (currentPage == Pages.settings) {
-                  } else {
-                    Navigator.push(context,
+                  if (currentPage != Pages.settings) {
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (BuildContext context) {
                       return SettingsPage();
                     }));

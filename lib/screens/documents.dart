@@ -75,10 +75,10 @@ class _DocumentPageState extends State<DocumentPage> {
       ),
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
-          )
+          // IconButton(
+          //   icon: const Icon(Icons.menu),
+          //   onPressed: () {},
+          // )
         ],
         leading: const CircleAvatar(
           child: Icon(Icons.camera),

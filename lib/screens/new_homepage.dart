@@ -37,10 +37,10 @@ class _NewHomePageState extends State<NewHomePage> {
       backgroundColor: Colors.blue.shade900,
       appBar: AppBar(
         actions: [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
-          )
+          // IconButton(
+          //   icon: const Icon(Icons.menu),
+          //   onPressed: () {},
+          // )
         ],
         leading: const CircleAvatar(
           child: Icon(Icons.camera),
