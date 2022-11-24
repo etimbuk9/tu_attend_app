@@ -38,10 +38,10 @@ class NavRow extends StatelessWidget {
                 title: 'Home',
                 buttonFunction: () {
                   if (currentPage != Pages.home) {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) {
                       return NewHomePage();
-                    }));
+                    }), (route) => false);
                   }
                 },
               ),
